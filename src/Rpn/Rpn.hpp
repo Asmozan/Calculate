@@ -21,11 +21,8 @@ private:
     double multiply();
     double divide();
     double abs();
-    double sin();
-    std::stack <double> rpn_stack;
-    std::map <std::string,std::function<double()>>
-            function_map;
+    double angle();
 
-    boost::tokenizer<boost::char_separator<char>>
-    initialize_calculator(const std::string& input);
+    std::stack <double> rpn_stack_;
+    std::map <std::string,std::function<double()>> functions_;
 };
