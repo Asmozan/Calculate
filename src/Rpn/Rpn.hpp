@@ -4,15 +4,12 @@
 #include <stack>
 #include <map>
 #include <functional>
-#include <boost/tokenizer.hpp>
-#include <boost/lexical_cast.hpp>
-#include <exception>
 
 class Rpn
 {
 public:
     Rpn();
-    Rpn(std::string);
+    explicit Rpn(std::string);
     int calculate(const std::string &);
 
 private:

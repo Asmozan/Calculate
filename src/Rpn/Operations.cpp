@@ -1,6 +1,7 @@
+#include "Operations.hpp"
+
 #include <iostream>
 #include <cmath>
-#include "Operations.hpp"
 
 namespace operations
 {
