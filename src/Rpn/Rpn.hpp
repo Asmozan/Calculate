@@ -12,16 +12,12 @@ class Rpn
 {
 public:
     Rpn();
+    Rpn(std::string);
     int calculate(const std::string &);
 
 private:
     double getArgument();
-    double add();
-    double minus();
-    double multiply();
-    double divide();
-    double abs();
-    double angle();
+    void defineFunctions();
 
     std::stack <double> rpn_stack_;
     std::map <std::string,std::function<double()>> functions_;

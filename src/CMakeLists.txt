@@ -1,6 +1,5 @@
 set(libsrc_SRCS
         Example.hpp
-        Example.cpp
         Rpn/Rpn.cpp Rpn/Rpn.hpp Rpn/Helpers.cpp Rpn/Helpers.hpp Rpn/Operations.cpp Rpn/Operations.hpp)
 
 # Declare the library
