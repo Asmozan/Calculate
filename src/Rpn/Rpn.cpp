@@ -77,33 +77,32 @@ boost::tokenizer<boost::char_separator<char> > Rpn::initialize_calculator(const 
 int Rpn::calculate(const std::string& input)
 {
     auto tokenizer = initialize_calculator(input);
-    
-    for (auto i = tokenizer.begin();
-         i != tokenizer.end(); ++i )
+
+    for (auto iterator = tokenizer.begin(); iterator != tokenizer.end(); ++iterator)
     {
         try
         {
-            rpn_stack.push(lexical_cast<int>(*i));
+            rpn_stack.push(lexical_cast<int>(*iterator));
         }
         catch(const bad_lexical_cast & c)
         {
 
             try{
-                rpn_stack.push(function_map.at(*i)());
+                rpn_stack.push(function_map.at(*iterator)());
             }
             catch(const std::invalid_argument& ia)
             {
                 std::string temp_helper;
-                for(; i != tokenizer.end(); ++i)
+                for(; iterator != tokenizer.end(); ++iterator)
                 {
-                    temp_helper += *i;
+                    temp_helper += *iterator;
                 }
                 throw std::invalid_argument(temp_helper);
 
             }
 
             catch(const std::out_of_range& c ){
-                std::string temp_helper = "No function name " + *i;
+                std::string temp_helper = "No function name " + *iterator;
                 throw std::out_of_range(temp_helper);
             }
         }
