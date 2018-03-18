@@ -1,6 +1,5 @@
 set(libsrc_SRCS
-        Example.hpp
-        Rpn/Rpn.cpp Rpn/Rpn.hpp Rpn/Helpers.cpp Rpn/Helpers.hpp Rpn/Operations.cpp Rpn/Operations.hpp)
+        Rpn/Calculator.cpp Rpn/Calculator.hpp Rpn/Helpers.cpp Rpn/Helpers.hpp Rpn/Operations.cpp Rpn/Operations.hpp)
 
 # Declare the library
 add_library(libsrc STATIC

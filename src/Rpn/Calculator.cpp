@@ -1,22 +1,24 @@
-#include "Rpn.hpp"
+#include "Calculator.hpp"
 
 #include <iostream>
+#include <regex>
 
 #include "Helpers.hpp"
 #include "Operations.hpp"
 
-Rpn::Rpn()
+Calculator::Calculator()
 {
     defineFunctions();
 }
 
-Rpn::Rpn(std::string input)
+Calculator::Calculator(std::string input)
 {
+    replaceVariablesWithValues();
     defineFunctions();
-    calculate(input);
+    calculate();
 }
 
-double Rpn::getArgument()
+double Calculator::getArgument()
 {
     if(rpn_stack_.empty())
     {
@@ -30,9 +32,9 @@ double Rpn::getArgument()
     return argument;
 }
 
-int Rpn::calculate(const std::string& input)
+double Calculator::calculate()
 {
-    auto tokens = helpers::split(input);
+    auto tokens = helpers::split(input_);
 
     for (const auto& token : tokens)
     {
@@ -49,7 +51,7 @@ int Rpn::calculate(const std::string& input)
     return rpn_stack_.top();
 }
 
-void Rpn::defineFunctions()
+void Calculator::defineFunctions()
 {
     functions_.emplace("+", [this](){return operations::add(getArgument(), getArgument());});
     functions_.emplace("-", [this](){return operations::minus(getArgument(), getArgument());});
@@ -57,4 +59,25 @@ void Rpn::defineFunctions()
     functions_.emplace("/", [this](){return operations::divide(getArgument(), getArgument());});
     functions_.emplace("abs", [this](){return operations::abs(getArgument());});
     functions_.emplace("angle", [this](){return operations::angle(getArgument());});
+}
+
+void Calculator::defineVariables()
+{
+    std::map<std::string, std::string> variables = {{"x", "6"}};
+}
+
+void Calculator::replaceVariablesWithValues()
+{
+    std::cout << input_;
+    std::map<std::string, std::string> variables = {{"x", "6"}};
+
+    std::regex re("\\b(\\w*"+variables.begin()->first+"\\w*)\\b");
+
+    input_ = std::regex_replace(input_, re, variables.at(variables.begin()->first));
+    std::cout << input_;
+}
+
+void Calculator::setInput(const std::string& input)
+{
+    input_ = input;
 }
