@@ -137,3 +137,14 @@ TEST_F(CalculatorShould, handleTwoVariables)
 
     EXPECT_EQ(5, calculator.calculate());
 }
+
+
+TEST_F(CalculatorShould, handleIntegralFunctionElement)
+{
+    calculator.setInput("2 x x y y * * * * 6 x * + 5 +");
+    calculator.defineVariable("x", "2");
+    calculator.defineVariable("y", "3");
+    calculator.replaceVariablesWithValues();
+
+    EXPECT_EQ(89, calculator.calculate());
+}

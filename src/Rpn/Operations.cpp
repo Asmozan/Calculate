@@ -40,5 +40,4 @@ namespace operations
     {
         return std::sin(argument*M_PI/180.0);
     }
-
 }   // operations
