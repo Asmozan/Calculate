@@ -12,11 +12,11 @@ public:
     explicit Calculator(std::string);
     double calculate();
     void replaceVariablesWithValues();
+    void defineVariable(const std::string& variable, const std::string& value);
 
 private:
     double getArgument();
     void defineFunctions();
-    void defineVariables();
 
     std::string input_;
 public:
@@ -25,4 +25,5 @@ public:
 private:
     std::stack <double> rpn_stack_;
     std::map <std::string,std::function<double()>> functions_;
+    std::map<std::string, std::string> variables_;
 };

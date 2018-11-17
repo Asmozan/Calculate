@@ -104,6 +104,8 @@ TEST_F(CalculatorShould, returnSinAt90)
 TEST_F(CalculatorShould, handleVariables)
 {
     calculator.setInput("x x +");
+    calculator.defineVariable("x", "6");
+
     calculator.replaceVariablesWithValues();
 
     EXPECT_EQ(12, calculator.calculate());
@@ -112,6 +114,8 @@ TEST_F(CalculatorShould, handleVariables)
 TEST_F(CalculatorShould, handleVariablesAndConsts)
 {
     calculator.setInput("x 2 +");
+    calculator.defineVariable("x", "6");
+
     calculator.replaceVariablesWithValues();
 
     EXPECT_EQ(8, calculator.calculate());
@@ -122,4 +126,14 @@ TEST_F(CalculatorShould, handleDouble)
     calculator.setInput("2.2 2.2 +");
 
     EXPECT_EQ(4.4, calculator.calculate());
+}
+
+TEST_F(CalculatorShould, handleTwoVariables)
+{
+    calculator.setInput("x y +");
+    calculator.defineVariable("x", "2");
+    calculator.defineVariable("y", "3");
+    calculator.replaceVariablesWithValues();
+
+    EXPECT_EQ(5, calculator.calculate());
 }

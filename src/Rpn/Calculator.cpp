@@ -61,19 +61,22 @@ void Calculator::defineFunctions()
     functions_.emplace("angle", [this](){return operations::angle(getArgument());});
 }
 
-void Calculator::defineVariables()
+void Calculator::defineVariable(const std::string& variable, const std::string& value)
 {
-    std::map<std::string, std::string> variables = {{"x", "6"}};
+    variables_[variable] = value;
 }
 
 void Calculator::replaceVariablesWithValues()
 {
     std::cout << input_;
-    std::map<std::string, std::string> variables = {{"x", "6"}};
 
-    std::regex re("\\b(\\w*"+variables.begin()->first+"\\w*)\\b");
 
-    input_ = std::regex_replace(input_, re, variables.at(variables.begin()->first));
+    for (auto variable : variables_)
+    {
+        std::regex re("\\b(\\w*"+variable.first+"\\w*)\\b");
+
+        input_ = std::regex_replace(input_, re, variables_.at(variable.first));
+    }
     std::cout << input_;
 }
 
