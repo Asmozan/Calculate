@@ -9,5 +9,6 @@ In development
 
 todo:
 ADD:
-Inegrals, derivatives etc.
-Change values to tamplate type
+- Inegrals, derivatives etc.
+- Change values to tamplate type
+- Proper error handling
