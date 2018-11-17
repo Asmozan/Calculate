@@ -116,3 +116,10 @@ TEST_F(CalculatorShould, handleVariablesAndConsts)
 
     EXPECT_EQ(8, calculator.calculate());
 }
+
+TEST_F(CalculatorShould, handleDouble)
+{
+    calculator.setInput("2.2 2.2 +");
+
+    EXPECT_EQ(4.4, calculator.calculate());
+}

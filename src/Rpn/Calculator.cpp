@@ -44,7 +44,7 @@ double Calculator::calculate()
         }
         else
         {
-            rpn_stack_.push(std::stoi(token));
+            rpn_stack_.push(std::stod(token));
         }
     }
 
